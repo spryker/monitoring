@@ -12,6 +12,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Monitoring\Dependency\Facade\MonitoringToLocaleFacadeInterface;
 use Spryker\Zed\Monitoring\Dependency\Service\MonitoringToUtilNetworkServiceInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
@@ -100,6 +101,9 @@ class GatewayControllerListener extends AbstractPlugin implements EventSubscribe
             $this->monitoringService->addCustomParameter(static::ATTRIBUTE_URL, $requestUri);
             $this->monitoringService->addCustomParameter(static::ATTRIBUTE_HOST, $host);
             $this->monitoringService->addCustomParameter(static::ATTRIBUTE_LOCALE, $this->localeFacade->getCurrentLocale()->getLocaleName());
+
+            $transactionName = $this->getTransactionName($request);
+            $this->monitoringService->setTransactionName($transactionName);
         }
     }
 
@@ -111,5 +115,17 @@ class GatewayControllerListener extends AbstractPlugin implements EventSubscribe
         return [
             KernelEvents::CONTROLLER => ['onKernelController'],
         ];
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return string
+     */
+    protected function getTransactionName(Request $request): string
+    {
+        $route = $request->attributes->get('_route', 'n/a');
+
+        return str_replace(':', '/', $route);
     }
 }
