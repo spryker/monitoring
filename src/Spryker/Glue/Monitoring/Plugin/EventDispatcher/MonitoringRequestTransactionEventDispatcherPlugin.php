@@ -16,9 +16,6 @@ namespace Spryker\Glue\Monitoring\Plugin\EventDispatcher;
  */
 class MonitoringRequestTransactionEventDispatcherPlugin extends AbstractMonitoringRequestTransactionEventDispatcherPlugin
 {
-    /**
-     * @return string
-     */
     protected function getLocaleName(): string
     {
         if (APPLICATION === 'GLUE_BACKEND') {

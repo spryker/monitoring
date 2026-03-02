@@ -13,9 +13,6 @@ use Spryker\Service\Monitoring\Model\MonitoringInterface;
 
 class MonitoringServiceFactory extends AbstractServiceFactory
 {
-    /**
-     * @return \Spryker\Service\Monitoring\Model\MonitoringInterface
-     */
     public function createMonitoring(): MonitoringInterface
     {
         return new Monitoring(

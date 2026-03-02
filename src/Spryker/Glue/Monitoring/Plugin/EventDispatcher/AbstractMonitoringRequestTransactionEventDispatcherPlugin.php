@@ -99,9 +99,6 @@ abstract class AbstractMonitoringRequestTransactionEventDispatcherPlugin extends
         return $eventDispatcher;
     }
 
-    /**
-     * @return string|null
-     */
     protected function getStore(): ?string
     {
         if (defined('APPLICATION_STORE')) {
@@ -111,9 +108,6 @@ abstract class AbstractMonitoringRequestTransactionEventDispatcherPlugin extends
         return null;
     }
 
-    /**
-     * @return string|null
-     */
     protected function getRegion(): ?string
     {
         if (defined('APPLICATION_REGION')) {
@@ -123,8 +117,5 @@ abstract class AbstractMonitoringRequestTransactionEventDispatcherPlugin extends
         return null;
     }
 
-    /**
-     * @return string
-     */
     abstract protected function getLocaleName(): string;
 }

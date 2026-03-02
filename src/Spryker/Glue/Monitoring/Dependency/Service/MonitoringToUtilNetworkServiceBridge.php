@@ -22,9 +22,6 @@ class MonitoringToUtilNetworkServiceBridge implements MonitoringToUtilNetworkSer
         $this->utilNetworkService = $utilNetworkService;
     }
 
-    /**
-     * @return string
-     */
     public function getHostName(): string
     {
         return $this->utilNetworkService->getHostName();

@@ -11,8 +11,5 @@ use Generated\Shared\Transfer\LocaleTransfer;
 
 interface MonitoringToLocaleFacadeInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getCurrentLocale(): LocaleTransfer;
 }

@@ -55,11 +55,6 @@ class EventHandler implements EventHandlerInterface
         $this->monitoringTransactionNamingStrategies = $monitoringTransactionNamingStrategies;
     }
 
-    /**
-     * @param \Symfony\Component\Console\Event\ConsoleTerminateEvent $event
-     *
-     * @return void
-     */
     public function handleConsoleTerminateEvent(ConsoleTerminateEvent $event): void
     {
         $this->monitoringService->markAsConsoleCommand();
@@ -70,11 +65,6 @@ class EventHandler implements EventHandlerInterface
         $this->addOptionsAsCustomParameter($event);
     }
 
-    /**
-     * @param \Symfony\Component\Console\Event\ConsoleTerminateEvent $event
-     *
-     * @return string
-     */
     protected function getTransactionName(ConsoleTerminateEvent $event): string
     {
         try {
@@ -92,11 +82,6 @@ class EventHandler implements EventHandlerInterface
         return static::TRANSACTION_NAME_PREFIX . $event->getCommand()->getName();
     }
 
-    /**
-     * @param \Symfony\Component\Console\Event\ConsoleTerminateEvent $event
-     *
-     * @return \Generated\Shared\Transfer\MonitoringTransactionEventTransfer
-     */
     protected function mapConsoleTerminateEventToMonitoringTransactionEventTransfer(
         ConsoleTerminateEvent $event
     ): MonitoringTransactionEventTransfer {
@@ -108,31 +93,16 @@ class EventHandler implements EventHandlerInterface
         return $monitoringTransactionEventTransfer;
     }
 
-    /**
-     * @param \Symfony\Component\Console\Event\ConsoleTerminateEvent $event
-     *
-     * @return void
-     */
     protected function addArgumentsAsCustomParameter(ConsoleTerminateEvent $event): void
     {
         $this->addCustomParameter($event->getInput()->getArguments());
     }
 
-    /**
-     * @param \Symfony\Component\Console\Event\ConsoleTerminateEvent $event
-     *
-     * @return void
-     */
     protected function addOptionsAsCustomParameter(ConsoleTerminateEvent $event): void
     {
         $this->addCustomParameter($event->getInput()->getOptions());
     }
 
-    /**
-     * @param array $customParameter
-     *
-     * @return void
-     */
     protected function addCustomParameter(array $customParameter): void
     {
         foreach ($customParameter as $key => $value) {

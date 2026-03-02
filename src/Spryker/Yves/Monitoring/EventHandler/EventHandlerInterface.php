@@ -11,10 +11,5 @@ use Symfony\Component\Console\Event\ConsoleTerminateEvent;
 
 interface EventHandlerInterface
 {
-    /**
-     * @param \Symfony\Component\Console\Event\ConsoleTerminateEvent $event
-     *
-     * @return void
-     */
     public function handleConsoleTerminateEvent(ConsoleTerminateEvent $event): void;
 }

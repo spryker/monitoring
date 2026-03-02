@@ -9,8 +9,5 @@ namespace Spryker\Glue\Monitoring\Dependency\Service;
 
 interface MonitoringToUtilNetworkServiceInterface
 {
-    /**
-     * @return string
-     */
     public function getHostName(): string;
 }

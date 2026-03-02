@@ -36,11 +36,6 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
      */
     protected $ignorableTransactions;
 
-    /**
-     * @param \Spryker\Service\Monitoring\MonitoringServiceInterface $monitoringService
-     * @param \Spryker\Yves\Monitoring\Dependency\Service\MonitoringToUtilNetworkServiceInterface $utilNetworkService
-     * @param array $ignorableTransactions
-     */
     public function __construct(
         MonitoringServiceInterface $monitoringService,
         MonitoringToUtilNetworkServiceInterface $utilNetworkService,
@@ -51,11 +46,6 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
         $this->ignorableTransactions = $ignorableTransactions;
     }
 
-    /**
-     * @param \Symfony\Component\HttpKernel\Event\ControllerEvent $event
-     *
-     * @return void
-     */
     public function onKernelController(ControllerEvent $event): void
     {
         if (!$this->isMainRequest($event)) {
@@ -76,11 +66,6 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
         }
     }
 
-    /**
-     * @param string $transaction
-     *
-     * @return bool
-     */
     protected function isTransactionIgnorable(string $transaction): bool
     {
         foreach ($this->ignorableTransactions as $ignorableTransaction) {
@@ -92,9 +77,6 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
         return false;
     }
 
-    /**
-     * @return array
-     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -102,11 +84,6 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
         ];
     }
 
-    /**
-     * @param \Symfony\Component\HttpKernel\Event\ControllerEvent $event
-     *
-     * @return bool
-     */
     protected function isMainRequest(ControllerEvent $event): bool
     {
         if (method_exists($event, 'isMasterRequest')) {

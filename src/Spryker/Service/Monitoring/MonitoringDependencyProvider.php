@@ -17,11 +17,6 @@ class MonitoringDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const MONITORING_EXTENSIONS = 'monitoring extensions';
 
-    /**
-     * @param \Spryker\Service\Kernel\Container $container
-     *
-     * @return \Spryker\Service\Kernel\Container
-     */
     public function provideServiceDependencies(Container $container): Container
     {
         $container = $this->addMonitoringExtensions($container);
@@ -29,11 +24,6 @@ class MonitoringDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Service\Kernel\Container $container
-     *
-     * @return \Spryker\Service\Kernel\Container
-     */
     protected function addMonitoringExtensions(Container $container): Container
     {
         // Usually we make use of a closure here. This is not possible here as we use the MonitoringService in our SessionHandler which are part of the Request object.

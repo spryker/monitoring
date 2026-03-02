@@ -37,11 +37,6 @@ class MonitoringDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const CLIENT_LOCALE = 'CLIENT_LOCALE';
 
-    /**
-     * @param \Spryker\Glue\Kernel\Backend\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Backend\Container
-     */
     public function provideBackendDependencies(Container $container): Container
     {
         $container = parent::provideBackendDependencies($container);
@@ -53,11 +48,6 @@ class MonitoringDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Backend\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Backend\Container
-     */
     protected function addMonitoringService(Container $container): Container
     {
         $container->set(static::SERVICE_MONITORING, function (Container $container): MonitoringServiceInterface {
@@ -67,11 +57,6 @@ class MonitoringDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Backend\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Backend\Container
-     */
     protected function addUtilNetworkService(Container $container): Container
     {
         $container->set(static::SERVICE_UTIL_NETWORK, function (Container $container): MonitoringToUtilNetworkServiceInterface {
@@ -81,11 +66,6 @@ class MonitoringDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Backend\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Backend\Container
-     */
     protected function addLocaleFacade(Container $container): Container
     {
         $container->set(static::FACADE_LOCALE, function (Container $container) {
@@ -95,11 +75,6 @@ class MonitoringDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Glue\Kernel\Backend\Container $container
-     *
-     * @return \Spryker\Glue\Kernel\Backend\Container
-     */
     protected function addLocaleClient(Container $container): Container
     {
         $container->set(static::CLIENT_LOCALE, function (Container $container) {

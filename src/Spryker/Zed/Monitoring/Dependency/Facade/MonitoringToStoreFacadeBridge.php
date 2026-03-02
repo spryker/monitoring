@@ -24,9 +24,6 @@ class MonitoringToStoreFacadeBridge implements MonitoringToStoreFacadeInterface
         $this->storeFacade = $storeFacade;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(): StoreTransfer
     {
         return $this->storeFacade->getCurrentStore();

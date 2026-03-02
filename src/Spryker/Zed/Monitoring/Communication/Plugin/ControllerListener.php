@@ -72,11 +72,6 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
         $this->ignorableTransactions = $ignorableTransactions;
     }
 
-    /**
-     * @param \Symfony\Component\HttpKernel\Event\ControllerEvent $event
-     *
-     * @return void
-     */
     public function onKernelController(ControllerEvent $event): void
     {
         if (!$this->isMainRequest($event)) {
@@ -100,11 +95,6 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
         }
     }
 
-    /**
-     * @param string $transaction
-     *
-     * @return bool
-     */
     protected function isTransactionIgnorable(string $transaction): bool
     {
         foreach ($this->ignorableTransactions as $ignorableTransaction) {
@@ -116,11 +106,6 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
         return false;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return string
-     */
     protected function getTransactionName(Request $request): string
     {
         $module = $request->attributes->get('module', 'n/a');
@@ -131,9 +116,6 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
         return $transactionName;
     }
 
-    /**
-     * @return array
-     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -153,11 +135,6 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
         }
     }
 
-    /**
-     * @param \Symfony\Component\HttpKernel\Event\ControllerEvent $event
-     *
-     * @return bool
-     */
     protected function isMainRequest(ControllerEvent $event): bool
     {
         if (method_exists($event, 'isMasterRequest')) {

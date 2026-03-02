@@ -19,9 +19,6 @@ use Spryker\Yves\Monitoring\Plugin\ControllerListener;
  */
 class MonitoringFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Yves\Monitoring\Plugin\ControllerListener
-     */
     public function createControllerListener(): ControllerListener
     {
         return new ControllerListener(
@@ -31,17 +28,11 @@ class MonitoringFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Service\Monitoring\MonitoringServiceInterface
-     */
     public function getMonitoringService(): MonitoringServiceInterface
     {
         return $this->getProvidedDependency(MonitoringDependencyProvider::MONITORING_SERVICE);
     }
 
-    /**
-     * @return \Spryker\Yves\Monitoring\Dependency\Service\MonitoringToUtilNetworkServiceInterface
-     */
     public function getUtilNetworkService(): MonitoringToUtilNetworkServiceInterface
     {
         return $this->getProvidedDependency(MonitoringDependencyProvider::SERVICE_NETWORK);
@@ -57,9 +48,6 @@ class MonitoringFactory extends AbstractFactory
         return $this->getProvidedDependency(MonitoringDependencyProvider::SERVICE_NETWORK);
     }
 
-    /**
-     * @return \Spryker\Yves\Monitoring\EventHandler\EventHandlerInterface
-     */
     public function createEventHandler(): EventHandlerInterface
     {
         return new EventHandler($this->getMonitoringService(), $this->getUtilNetworkService());

@@ -68,11 +68,6 @@ class GatewayControllerListener extends AbstractPlugin implements EventSubscribe
      */
     protected MonitoringToLocaleFacadeInterface $localeFacade;
 
-    /**
-     * @param \Spryker\Service\Monitoring\MonitoringServiceInterface $monitoringService
-     * @param \Spryker\Zed\Monitoring\Dependency\Service\MonitoringToUtilNetworkServiceInterface $utilNetworkService
-     * @param \Spryker\Zed\Monitoring\Dependency\Facade\MonitoringToLocaleFacadeInterface $localeFacade
-     */
     public function __construct(
         MonitoringServiceInterface $monitoringService,
         MonitoringToUtilNetworkServiceInterface $utilNetworkService,
@@ -83,11 +78,6 @@ class GatewayControllerListener extends AbstractPlugin implements EventSubscribe
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param \Symfony\Component\HttpKernel\Event\ControllerEvent $event
-     *
-     * @return void
-     */
     public function onKernelController(ControllerEvent $event): void
     {
         $request = $event->getRequest();
@@ -107,9 +97,6 @@ class GatewayControllerListener extends AbstractPlugin implements EventSubscribe
         }
     }
 
-    /**
-     * @return array
-     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -117,11 +104,6 @@ class GatewayControllerListener extends AbstractPlugin implements EventSubscribe
         ];
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return string
-     */
     protected function getTransactionName(Request $request): string
     {
         $route = $request->attributes->get('_route', 'n/a');

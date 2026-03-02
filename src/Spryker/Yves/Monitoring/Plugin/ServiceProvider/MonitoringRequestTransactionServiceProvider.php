@@ -19,30 +19,15 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  */
 class MonitoringRequestTransactionServiceProvider extends AbstractPlugin implements ServiceProviderInterface
 {
-    /**
-     * @param \Silex\Application $app
-     *
-     * @return void
-     */
     public function register(Application $app): void
     {
     }
 
-    /**
-     * @param \Silex\Application $app
-     *
-     * @return void
-     */
     public function boot(Application $app): void
     {
         $this->addControllerListener($app);
     }
 
-    /**
-     * @param \Silex\Application $app
-     *
-     * @return void
-     */
     protected function addControllerListener(Application $app): void
     {
         $this->getDispatcher($app)->addSubscriber(
@@ -50,11 +35,6 @@ class MonitoringRequestTransactionServiceProvider extends AbstractPlugin impleme
         );
     }
 
-    /**
-     * @param \Silex\Application $app
-     *
-     * @return \Symfony\Component\EventDispatcher\EventDispatcherInterface
-     */
     protected function getDispatcher(Application $app): EventDispatcherInterface
     {
         return $app['dispatcher'];

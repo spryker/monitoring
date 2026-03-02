@@ -9,8 +9,5 @@ namespace Spryker\Yves\Monitoring\Dependency\Service;
 
 interface MonitoringToUtilNetworkServiceInterface
 {
-    /**
-     * @return string
-     */
     public function getHostName(): string;
 }

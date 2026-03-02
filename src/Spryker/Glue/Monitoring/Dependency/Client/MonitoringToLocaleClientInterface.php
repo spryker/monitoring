@@ -9,8 +9,5 @@ namespace Spryker\Glue\Monitoring\Dependency\Client;
 
 interface MonitoringToLocaleClientInterface
 {
-    /**
-     * @return string
-     */
     public function getCurrentLocale(): string;
 }

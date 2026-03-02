@@ -26,11 +26,6 @@ class MonitoringDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const SERVICE_NETWORK = 'util network service';
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     public function provideDependencies(Container $container): Container
     {
         $container = $this->addMonitoringService($container);
@@ -39,11 +34,6 @@ class MonitoringDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function addMonitoringService(Container $container): Container
     {
         $container->set(static::MONITORING_SERVICE, function (Container $container) {
@@ -53,11 +43,6 @@ class MonitoringDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
     protected function addUtilNetworkService(Container $container): Container
     {
         $container->set(static::SERVICE_NETWORK, function (Container $container) {

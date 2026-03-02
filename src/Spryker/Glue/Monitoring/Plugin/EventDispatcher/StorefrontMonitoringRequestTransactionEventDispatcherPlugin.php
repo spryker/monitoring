@@ -12,9 +12,6 @@ namespace Spryker\Glue\Monitoring\Plugin\EventDispatcher;
  */
 class StorefrontMonitoringRequestTransactionEventDispatcherPlugin extends AbstractMonitoringRequestTransactionEventDispatcherPlugin
 {
-    /**
-     * @return string
-     */
     protected function getLocaleName(): string
     {
         return $this->getFactory()->getLocaleClient()->getCurrentLocale();

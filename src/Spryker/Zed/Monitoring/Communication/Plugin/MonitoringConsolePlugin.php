@@ -49,11 +49,6 @@ class MonitoringConsolePlugin extends AbstractPlugin implements EventSubscriberI
         $this->addOptionsAsCustomParameter($event);
     }
 
-    /**
-     * @param \Symfony\Component\Console\Event\ConsoleTerminateEvent $event
-     *
-     * @return string
-     */
     protected function getTransactionName(ConsoleTerminateEvent $event): string
     {
         return static::TRANSACTION_NAME_PREFIX . $event->getCommand()->getName();
@@ -73,31 +68,16 @@ class MonitoringConsolePlugin extends AbstractPlugin implements EventSubscriberI
         ];
     }
 
-    /**
-     * @param \Symfony\Component\Console\Event\ConsoleTerminateEvent $event
-     *
-     * @return void
-     */
     protected function addArgumentsAsCustomParameter(ConsoleTerminateEvent $event): void
     {
         $this->addCustomParameter($event->getInput()->getArguments());
     }
 
-    /**
-     * @param \Symfony\Component\Console\Event\ConsoleTerminateEvent $event
-     *
-     * @return void
-     */
     protected function addOptionsAsCustomParameter(ConsoleTerminateEvent $event): void
     {
         $this->addCustomParameter($event->getInput()->getOptions());
     }
 
-    /**
-     * @param array $customParameter
-     *
-     * @return void
-     */
     protected function addCustomParameter(array $customParameter): void
     {
         $monitoring = $this->getFactory()->getMonitoringService();

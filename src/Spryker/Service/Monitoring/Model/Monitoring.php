@@ -44,13 +44,6 @@ class Monitoring implements MonitoringInterface
         }
     }
 
-    /**
-     * @param string|null $application
-     * @param string|null $store
-     * @param string|null $environment
-     *
-     * @return void
-     */
     public function setApplicationName(?string $application = null, ?string $store = null, ?string $environment = null): void
     {
         if (static::$isApplicationNameSet) {
@@ -72,11 +65,6 @@ class Monitoring implements MonitoringInterface
         static::$isApplicationNameSet = true;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return void
-     */
     public function setTransactionName(string $name): void
     {
         $this->setApplicationName();
@@ -86,9 +74,6 @@ class Monitoring implements MonitoringInterface
         }
     }
 
-    /**
-     * @return void
-     */
     public function markStartTransaction(): void
     {
         $this->setApplicationName();
@@ -97,9 +82,6 @@ class Monitoring implements MonitoringInterface
         }
     }
 
-    /**
-     * @return void
-     */
     public function markEndOfTransaction(): void
     {
         $this->setApplicationName();
@@ -108,9 +90,6 @@ class Monitoring implements MonitoringInterface
         }
     }
 
-    /**
-     * @return void
-     */
     public function markIgnoreTransaction(): void
     {
         $this->setApplicationName();
@@ -119,9 +98,6 @@ class Monitoring implements MonitoringInterface
         }
     }
 
-    /**
-     * @return void
-     */
     public function markAsConsoleCommand(): void
     {
         $this->setApplicationName();
@@ -144,11 +120,6 @@ class Monitoring implements MonitoringInterface
         }
     }
 
-    /**
-     * @param string $tracer
-     *
-     * @return void
-     */
     public function addCustomTracer(string $tracer): void
     {
         $this->setApplicationName();
@@ -157,12 +128,6 @@ class Monitoring implements MonitoringInterface
         }
     }
 
-    /**
-     * @param string $name
-     * @param array $attributes
-     *
-     * @return void
-     */
     public function addCustomEvent(string $name, array $attributes = []): void
     {
         $this->setApplicationName();

@@ -19,9 +19,6 @@ use Spryker\Zed\Monitoring\MonitoringDependencyProvider;
  */
 class MonitoringBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\Monitoring\Business\EventHandler\EventHandlerInterface
-     */
     public function createEventHandler(): EventHandlerInterface
     {
         return new EventHandler(
@@ -39,17 +36,11 @@ class MonitoringBusinessFactory extends AbstractBusinessFactory
         return [];
     }
 
-    /**
-     * @return \Spryker\Service\Monitoring\MonitoringServiceInterface
-     */
     public function getMonitoringService(): MonitoringServiceInterface
     {
         return $this->getProvidedDependency(MonitoringDependencyProvider::MONITORING_SERVICE);
     }
 
-    /**
-     * @return \Spryker\Zed\Monitoring\Dependency\Service\MonitoringToUtilNetworkServiceInterface
-     */
     public function getUtilNetworkService(): MonitoringToUtilNetworkServiceInterface
     {
         return $this->getProvidedDependency(MonitoringDependencyProvider::SERVICE_UTIL_NETWORK);
